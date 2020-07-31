@@ -1,4 +1,6 @@
-# Cloud Run
+# Cloud Run Authentication
+
+## General Questions
 How to create a secure and scalable web app?
 - How to make sure users on a corporate intranet can view and use easily?
 - How to best build and have all functions.
@@ -7,8 +9,9 @@ How to use instead of Cloud Functions?
 - Which benefits are there? For Python the code is about the same size. Cost is the similar if one-time requests, but if many Cloud Run is better.
 
 When is it appropriate to use Anthos or Kubernetes instead of managed?
-- Managed has a cold start which the other can avoid. But the cost is then greater.
+- Managed has a cold start which the other can avoid. But at a greater running cost.
 
+## Build & Deploy
 ### Local
 ```bash
 docker build -t cloud-run-auth .
@@ -51,6 +54,8 @@ Access tokens seems to be used for standard GCP services and their APIs.
 In order to gain access the scope for the correct service needs to be set and the account granted access in IAM.
 You can find all scopes here: https://developers.google.com/identity/protocols/oauth2/scopes
 The scope https://www.googleapis.com/auth/cloud-platform has access to all APIs on GCP. You still need to have permission through IAM.
+
+On the API page it states which scopes are needed and in the product which IAM permissions is needed and what roles has them.   
 
 You can look at the access token like this:
 `curl -H "Content-Type: application/x-www-form-urlencoded" -d "access_token=$(gcloud auth application-default print-access-token)" https://www.googleapis.com/oauth2/v1/tokeninfo`
